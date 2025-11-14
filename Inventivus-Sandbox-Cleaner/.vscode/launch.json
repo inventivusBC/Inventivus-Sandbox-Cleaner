@@ -6,13 +6,12 @@
             "request": "launch",
             "type": "al",
             "environmentType": "Sandbox",
-            "environmentName": "TKH-US-TEST",
+            "environmentName": "Sandbox",
             "startupObjectId": 22,
             "startupObjectType": "Page",
             "breakOnError": "All",
             "launchBrowser": true,
             "enableLongRunningSqlStatements": true,
-            "tenant": "8e730110-5a91-4a05-a126-f6815954f9e1",
             "schemaUpdateMode": "ForceSync",
             "enableSqlInformationDebugger": true
         }
