@@ -9,7 +9,7 @@ page 77000 "Inventivus Sandbox Cleaner"
         tabledata "Change Log Entry" = rimd,
         tabledata "VAT Entry" = rimd,
 
-        tabledata "Tenant Media" = rimd,
+        tabledata "Document Attachment" = rimd,
         tabledata "Tenant Media Set" = rimd,
         tabledata "Job Queue Log Entry" = rimd,
         tabledata "Sales Invoice Line" = rimd;
@@ -75,7 +75,7 @@ page 77000 "Inventivus Sandbox Cleaner"
                 trigger OnAction()
                 var
                     EnvironmentInfo: Codeunit "Environment Information";
-                    MediaRec: Record "Tenant Media";
+                    MediaRec: Record "Document Attachment";
                     Dialog: Dialog;
                     Counter: BigInteger;
                     Text000: Label 'Deleting old media: #1';

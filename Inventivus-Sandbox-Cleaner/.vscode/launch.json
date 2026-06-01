@@ -6,7 +6,7 @@
             "request": "launch",
             "type": "al",
             "environmentType": "Sandbox",
-            "environmentName": "TKH-US-TEST",
+            "environmentName": "TKH-NL-TEST2",
             "startupObjectId": 22,
             "startupObjectType": "Page",
             "breakOnError": "All",
