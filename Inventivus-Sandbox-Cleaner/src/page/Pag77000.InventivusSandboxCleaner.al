@@ -12,6 +12,7 @@ page 77000 "Inventivus Sandbox Cleaner"
         tabledata "Document Attachment" = rimd,
         tabledata "Tenant Media Set" = rimd,
         tabledata "Job Queue Log Entry" = rimd,
+        tabledata "Sent Email" = rimd,
         tabledata "Sales Invoice Line" = rimd;
 
     layout
@@ -134,6 +135,44 @@ page 77000 "Inventivus Sandbox Cleaner"
                     Dialog.CLOSE();
                     Message('%1 Change Log Entry records older than 1 month deleted.', Counter);
 
+                end;
+            }
+
+            action(DeleteOldEmails)
+            {
+                Caption = 'Delete Old Emails (Sandbox Only)';
+                Image = Delete;
+                ApplicationArea = All;
+
+                trigger OnAction()
+                var
+                    EnvironmentInfo: Codeunit "Environment Information";
+                    SentEmail: Record "Sent Email";
+                    Dialog: Dialog;
+                    Counter: BigInteger;
+                    Text000: Label 'Deleting old sent emails: #1';
+                begin
+                    if EnvironmentInfo.IsProduction() then
+                        Error('Deleting old sent emails is only allowed in Sandbox environments.');
+
+                    if not Confirm('Delete Sent Email records older than 30 days?') then
+                        exit;
+
+                    SentEmail.SetRange(SystemCreatedAt, 0DT, CreateDateTime(Today() - 30, 0T));
+
+                    Counter := 0;
+                    Dialog.OPEN(Text000, Counter);
+
+                    if SentEmail.FindSet() then
+                        repeat
+                            SentEmail.Delete(true);
+                            Counter += 1;
+                            Dialog.UPDATE();
+                            Commit();
+                        until SentEmail.Next() = 0;
+
+                    Dialog.CLOSE();
+                    Message('%1 Sent Email records older than 30 days deleted.', Counter);
                 end;
             }
         }
