@@ -1,19 +1,20 @@
 {
     "version": "0.2.0",
     "configurations": [
-                {
+        {
             "name": "Microsoft cloud sandbox",
             "request": "launch",
             "type": "al",
             "environmentType": "Sandbox",
-            "environmentName": "TKH-NL-TEST2",
-            "startupObjectId": 22,
+            "environmentName": "UAT21",
+            "startupObjectId": 31,
             "startupObjectType": "Page",
-            "breakOnError": "All",
+            "breakOnError": "All", 
             "launchBrowser": true,
             "enableLongRunningSqlStatements": true,
-            "schemaUpdateMode": "ForceSync",
-            "enableSqlInformationDebugger": true
-        }
+            "enableSqlInformationDebugger": true,
+            "tenant": "623a37e2-1006-4d62-a989-ea88a6854ff8",
+            "schemaUpdateMode": "ForceSync"
+        }   
     ]
-}
+}   
